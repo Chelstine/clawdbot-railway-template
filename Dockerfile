@@ -62,8 +62,7 @@ RUN printf '%s\n' '#!/usr/bin/env bash' 'exec node /openclaw/dist/entry.js "$@"'
 
 COPY src ./src
 
-# The wrapper listens on this port.
-ENV OPENCLAW_PUBLIC_PORT=8080
-ENV PORT=8080
+# The wrapper listens on this port. Railway will provide PORT.
+# We expose 8080 as a default but don't force its value via ENV.
 EXPOSE 8080
 CMD ["node", "src/server.js"]
